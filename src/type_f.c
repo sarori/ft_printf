@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:15:04 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 03:15:21 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 16:31:52 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char			*f_handle(t_pf *pf, char *res, long double num)
 	return (res);
 }
 
-char 			*f_zero_handle(t_pf *pf, char *res, int start, int size)
+char			*f_zero_handle(t_pf *pf, char *res, int start, int size)
 {
 	if (pf->set.zero)
 	{
@@ -120,25 +120,4 @@ char			*f_minus_handle(t_pf *pf, char *res, long double num)
 	if (start < (int)ft_strlen(res))
 		ft_elem(res, dp_tmp, start, ft_strlen(dp_tmp));
 	return (res);
-}
-
-u_int64_t		cvt_num(t_pf *pf, long double num)
-{
-	u_int64_t	ip;
-	long double	dp;
-	uintmax_t 	n;
-	u_int64_t	size;
-
-	ip = (u_int64_t)num;
-	dp = num - (u_int64_t)num;
-	size = pf->set.precision;
-	if (pf->set.dot)
-		size = pf->set.precision;
-	else if (!pf->set.dot)
-		size = 6;
-	while (size-- > 0)
-		dp *= 10;
-	n = (uintmax_t)dp;
-	n += ((uintmax_t)(dp * 10)) % 10 >= 5 ? 1 : 0;
-	return (n);
 }

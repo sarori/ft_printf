@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_csp.c                                         :+:      :+:    :+:   */
+/*   type_cs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 02:12:12 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 03:05:42 by sapark           ###   ########.fr       */
+/*   Created: 2019/08/31 16:03:41 by sapark            #+#    #+#             */
+/*   Updated: 2019/08/31 17:12:35 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*c_zerohandle(t_pf *pf, char *res, int len)
+{
+	int	start;
+
+	start = pf->set.width > 1 ? pf->set.width - 1 : 1;
+	if (pf->set.minus || pf->set.precision)
+	{
+		res[0] = '^';
+		res[1] = '@';
+		pf->minus += 1;
+	}
+	else
+	{
+		res[len - 2] = '^';
+		res[len - 1] = '@';
+		pf->minus += 1;
+	}
+	return (res);
+}
 
 void	type_c(va_list *ap, t_pf *pf)
 {
@@ -27,30 +47,7 @@ void	type_c(va_list *ap, t_pf *pf)
 	res = ft_memalloc_chr(len, ' ');
 	res[len] = '\0';
 	if (i == 0)
-	{
-		if (pf->set.minus || pf->set.precision)
-		{
-			if (i == 0)
-			{
-				res[0] = '^';
-				res[1] = '@';
-				pf->minus += 1;
-			}
-			else
-				res[0] = i;
-		}
-		else
-		{
-			if (i == 0)
-			{
-				res[len - 2] = '^';
-				res[len - 1] = '@';
-				pf->minus += 1;
-			}
-			else
-				res[start - 1] = i;
-		}
-	}
+		res = c_zerohandle(pf, res, len);
 	else
 	{
 		if (pf->set.minus)
@@ -121,65 +118,17 @@ void	type_s(va_list *ap, t_pf *pf)
 		pf->res = ft_strjoinfree(pf->res, "(null)", 1);
 	else
 	{
-		len = pf->set.width > (int)ft_strlen(str) ? pf->set.width : (int)ft_strlen(str);
+		len = pf->set.width > (int)ft_strlen(str) ?
+			pf->set.width : (int)ft_strlen(str);
 		res = ft_memalloc_chr(len, ' ');
 		res[len] = '\0';
 		if (!pf->set.width && !pf->set.dot)
 			res = ft_strcpy(res, str);
 		else
-		{
-			if (pf->set.dot && !pf->set.width)
-				res = width_handle(pf, res, str);
-			else
-				res = prec_handle(pf, res, str);
-		}
+			res = (pf->set.dot && !pf->set.width) ?
+				width_handle(pf, res, str) : prec_handle(pf, res, str);
 		insertnode(pf, res);
 		pf->res = ft_strjoinfree(pf->res, res, 1);
 		free(res);
 	}
-}
-
-void	type_p(va_list *ap, t_pf *pf)
-{
-	char	*res;
-	char	*tmp;
-	void	*ptr;
-	int		len;
-	int		start;
-	int		size;
-
-	ptr = va_arg(*ap, void *);
-	start = 0;
-	size = 0;
-	len = cal_len(pf, (unsigned long long)ptr, 16) + 2;
-	res = NULL;
-	if ((unsigned long long)ptr == 0)
-	{
-		if (pf->set.dot)
-			len--;
-		res = ft_memalloc_chr(len, ' ');
-		res[len] = '\0';
-		ft_elem(res, "0x", start, 2);
-		if (!pf->set.dot)
-			ft_elem(res, "0", start + 2, 2);
-	}
-	else
-	{
-		res = ft_memalloc_chr(len, ' ');
-		res[len] = '\0';
-		tmp = ft_itoa_base_u((unsigned long long)ptr, 16);
-		if (pf->set.minus)
-		{
-			res = di_minus_handle(pf, res, tmp);
-			ft_elem(res, "0x", 0, 2);
-		}
-		else
-		{
-			res = di_handle(pf, res, tmp);
-			ft_elem(res, "0x", 0, 2);
-		}
-	}
-	insertnode(pf, res);
-	pf->res = ft_strjoinfree(pf->res, res, 1);
-	free(res);
 }

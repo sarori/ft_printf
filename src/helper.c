@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:45:55 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 03:08:51 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 16:29:10 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ char	*element_join(char *res, char const *s1, char const *s2)
 	return (res);
 }
 
+int		cal_helper(t_pf *pf, u_int64_t num, int max, int base)
+{
+	if (ft_digit_base_u(num, base) == max && pf->set.hash)
+	{
+		if (base == 16)
+			max++;
+		max++;
+	}
+	if (max == ft_digit_base_u(num, base) && !pf->set.sign && base == 10)
+	{
+		if (pf->set.space || pf->set.plus)
+			max += 1;
+	}
+	return (max);
+}
+
 int		cal_len(t_pf *pf, u_int64_t num, int base)
 {
 	int	max;
@@ -55,16 +71,6 @@ int		cal_len(t_pf *pf, u_int64_t num, int base)
 		else
 			max = pf->set.precision + (pf->set.sign ? 1 : 0);
 	}
-	if (ft_digit_base_u(num, base) == max && pf->set.hash)
-	{
-		if (base == 16)
-			max++;
-		max++;
-	}
-	if (max == ft_digit_base_u(num, base) && !pf->set.sign && base == 10)
-	{
-		if (pf->set.space || pf->set.plus)
-			max += 1;
-	}
+	max = cal_helper(pf, num, max, base);
 	return (max);
 }

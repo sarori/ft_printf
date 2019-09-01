@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cal_len.c                                          :+:      :+:    :+:   */
+/*   cal.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 02:16:49 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 02:27:22 by sapark           ###   ########.fr       */
+/*   Created: 2019/08/31 16:14:07 by sapark            #+#    #+#             */
+/*   Updated: 2019/08/31 16:29:54 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,45 @@ u_int64_t	cnt_flen(t_pf *pf, u_int64_t num)
 	if (!pf->set.hash && pf->set.dot && !pf->set.precision)
 		len--;
 	return (len);
+}
+
+u_int64_t	zero_len(t_pf *pf, u_int64_t num)
+{
+	int	len;
+
+	len = 0;
+	if (num == 0)
+	{
+		if (pf->set.precision > 1)
+		{
+			if (pf->set.width > pf->set.precision)
+				len = pf->set.width;
+			else
+				len = pf->set.precision + 2;
+		}
+		else
+			len = 3;
+	}
+	return (len);
+}
+
+u_int64_t	cvt_num(t_pf *pf, long double num)
+{
+	u_int64_t	ip;
+	long double	dp;
+	uintmax_t	n;
+	u_int64_t	size;
+
+	ip = (u_int64_t)num;
+	dp = num - (u_int64_t)num;
+	size = pf->set.precision;
+	if (pf->set.dot)
+		size = pf->set.precision;
+	else if (!pf->set.dot)
+		size = 6;
+	while (size-- > 0)
+		dp *= 10;
+	n = (uintmax_t)dp;
+	n += ((uintmax_t)(dp * 10)) % 10 >= 5 ? 1 : 0;
+	return (n);
 }

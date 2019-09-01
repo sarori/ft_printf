@@ -13,14 +13,60 @@ int main(int ac, char *av[])
 	//  printf("%#x\n", 42);
 	// printf("%#8x\n", 42);
 	//  printf("%#08x\n", 42);
-	ft_printf("%15.4s\n", "42 is the answer");
-	printf("%15.4s\n", "42 is the answer");
-	// ft_printf("%010x\n", 542);
-	// printf("%010x\n", 542);
-	ft_printf("%-#10.5x\n", 8);//error
-	printf("%-#10.5x\n", 8);
-	ft_printf("%-#10.5X\n", 8);//error
-	printf("%-#10.5X\n", 8);
+	// ft_printf("%15.4s\n", "42 is the answer");
+	// printf("%15.4s\n", "42 is the answer");
+	// // ft_printf("%010x\n", 542);
+	// // printf("%010x\n", 542);
+	// ft_printf("%-#10.5x\n", 8);//error
+	// printf("%-#10.5x\n", 8);
+	// ft_printf("%-#10.5X\n", 8);//error
+	// printf("%-#10.5X\n", 8);
+	// printf("%#c\n", 0);
+	// ft_printf("%#c\n", 0);
+	// printf("%.5p\n", 0);
+	// ft_printf("%.5p\n", 0);
+	// printf("%10p\n", 0);
+	// printf("%10p\n", 0);
+
+	// printf("f{%+03d}\n", 0);
+	// ft_printf("{%+03d}\n", 0);
+
+	// printf("%9.2p\n", 1234);
+	// ft_printf("%9.2p\n", 1234);
+	// printf("%.5p\n", 0);
+	// ft_printf("%.5p\n", 0);
+
+	// ft_printf("%03.2d\n", 0);
+	// printf("%03.2d\n", 0);
+
+	// printf("%15.4x\n", 42);
+	// ft_printf("%15.4x\n", 42);
+	// printf("%-#10.5x\n", 8);
+	// ft_printf("%-#10.5x\n", 8);//error
+	// printf("f%2.9p\n", 1234);
+	// ft_printf("%2.9p\n", 1234);
+	//  ft_printf("%#08x\n", 42);
+	// printf("f%#08x\n", 42);
+	ft_printf("hello {red} good {eoc}\n");
+	ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+	printf("f@moulitest: %5.x %5.0x\n", 0, 0);
+	 ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
+	printf("f@moulitest: %5.o %5.0o\n", 0, 0);
+	ft_printf("%03.2d\n", 0);
+	printf("f%03.2d\n", 0);
+	ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
+	printf("f@moulitest: %5.d %5.0d\n", 0, 0);
+	// ft_printf("%#-08x\n", 42);
+	// printf("%#-08x\n", 42);
+	// ft_printf("%#x\n", 0);
+	// printf("f%#x\n", 0);
+	// ft_printf("%#x\n", 42);
+	// printf("f%#x\n", 42);
+	//  ft_printf("%#-08o\n", 42);
+	// printf("%#-08o\n", 42);
+	//   ft_printf("%.5p\n", 0);
+	//   printf("%.4x\n", 42);
+	//   ft_printf("%.4x\n", 42);
 	//   ft_printf("%d is one\n", 1);
 	//   ft_printf("%03.2d\n", -1);
 	//   ft_printf("@moulitest: %o\n", 0);

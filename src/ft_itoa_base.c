@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:58:46 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 13:37:58 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 16:10:07 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_strjoinfree(char *s1, char *s2, int mfree)
 	return (res);
 }
 
-int	ft_digit_base_u(unsigned long long n, unsigned long long base)
+int		ft_digit_base_u(unsigned long long n, unsigned long long base)
 {
 	unsigned int	cnt;
 

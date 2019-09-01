@@ -6,37 +6,13 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:38:44 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 03:06:16 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 19:32:58 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_printf(char *str, ...)
-{
-	int		i;
-	int		cnt;
-
-	va_list ap;
-	t_pf *pf;
-	pf = ft_memalloc(sizeof(t_pf));
-	i = 0;
-	cnt = 0;
-	va_start(ap, str);
-	while (str[i])
-	{
-		if (str[i] == '%')
-			setting(str, &i, &ap, pf);
-		else
-			pf->res = ft_scjoin(pf->res, str[i], 1);
-		i++;
-	}
-	va_end(ap);
-	ft_putstr(pf->res);
-	return ((int)ft_strlen(pf->res) - pf->minus);
-}
-
-t_typedt	set_dt[] =
+t_typedt	g_set_dt[] =
 {
 	{'c', type_c},
 	{'s', type_s},
@@ -46,11 +22,125 @@ t_typedt	set_dt[] =
 	{'o', type_o},
 	{'u', type_u},
 	{'x', type_x},
-	{'X', type_X},
+	{'X', type_largex},
 	{'f', type_f},
 	{'%', type_per},
 	{'b', type_b}
 };
+
+int			ft_printf(char *str, ...)
+{
+	int		i;
+	int		cnt;
+	va_list	ap;
+	t_pf	*pf;
+	int		ret;
+
+	pf = ft_memalloc(sizeof(t_pf));
+	i = 0;
+	cnt = 0;
+	va_start(ap, str);
+	while (str[i])
+	{
+		if (str[i] == '%')
+			setting(str, &i, &ap, pf);
+		else if (str[i] == '{')
+			ft_color(str, &i, pf);
+		else
+			pf->res = ft_scjoin(pf->res, str[i], 1);
+		i++;
+	}
+	va_end(ap);
+	ft_putstr(pf->res);
+	ret = (int)ft_strlen(pf->res) - pf->minus;
+	free(pf->res);
+	free(pf);
+	return (ret);
+}
+
+// int			ft_dprintf(char *str, int fd, ...)
+// {
+// 	int		i;
+// 	int		cnt;
+// 	va_list	ap;
+// 	t_pf	*pf;
+// 	int		ret;
+
+// 	pf = ft_memalloc(sizeof(t_pf));
+// 	i = 0;
+// 	cnt = 0;
+// 	va_start(ap, str);
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '%')
+// 			setting(str, &i, &ap, pf);
+// 		else
+// 			pf->res = ft_scjoin(pf->res, str[i], 1);
+// 		i++;
+// 	}
+// 	va_end(ap);
+// 	ft_putstr_fd(pf->res, fd);
+// 	ret = (int)ft_strlen(pf->res) - pf->minus;
+// 	free(pf->res);
+// 	free(pf);
+// 	return (ret);
+// }
+
+// int			ft_sprintf(char *buffer, char *str, ...)
+// {
+// 	int		i;
+// 	int		cnt;
+// 	va_list	ap;
+// 	t_pf	*pf;
+// 	int		ret;
+
+// 	pf = ft_memalloc(sizeof(t_pf));
+// 	i = 0;
+// 	cnt = 0;
+// 	va_start(ap, str);
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '%')
+// 			setting(str, &i, &ap, pf);
+// 		else
+// 			pf->res = ft_scjoin(pf->res, str[i], 1);
+// 		i++;
+// 	}
+// 	va_end(ap);
+// 	buffer = ft_strdup(pf->res);
+// 	ret = (int)ft_strlen(pf->res) - pf->minus;
+// 	free(pf->res);
+// 	free(pf);
+// 	return (ret);
+// }
+
+// int			ft_fprintf(FILE *f, char *str, ...)
+// {
+// 	int		i;
+// 	int		cnt;
+// 	va_list	ap;
+// 	t_pf	*pf;
+// 	int		ret;
+
+// 	pf = ft_memalloc(sizeof(t_pf));
+// 	i = 0;
+// 	cnt = 0;
+// 	va_start(ap, str);
+// 	while (str[i])
+// 	{
+// 		if (str[i] == '%')
+// 			setting(str, &i, &ap, pf);
+// 		else
+// 			pf->res = ft_scjoin(pf->res, str[i], 1);
+// 		i++;
+// 	}
+// 	va_end(ap);
+// 	buffer = ft_strdup(pf->res);
+// 	ret = (int)ft_strlen(pf->res) - pf->minus;
+// 	free(pf->res);
+// 	free(pf);
+// 	return (ret);
+// }
 
 int			setting(char *input, int *i, va_list *ap, t_pf *pf)
 {
@@ -72,7 +162,7 @@ int			setting(char *input, int *i, va_list *ap, t_pf *pf)
 			length_setting(input, i, pf);
 		idx = ft_strchr_idx(SPECIFIER, input[*i]);
 	}
-	set_dt[idx].f(ap, pf);
+	g_set_dt[idx].f(ap, pf);
 	return (0);
 	(void)ap;
 }

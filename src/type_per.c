@@ -6,13 +6,13 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:13:00 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 03:09:35 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 16:53:42 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		type_per(va_list *ap, t_pf *pf)
+void	type_per(va_list *ap, t_pf *pf)
 {
 	char	per;
 	char	*res;
@@ -40,15 +40,15 @@ void		type_per(va_list *ap, t_pf *pf)
 	free(res);
 }
 
-void		type_b(va_list *ap, t_pf *pf)
+void	type_b(va_list *ap, t_pf *pf)
 {
 	u_int64_t	binary;
 	char		*res;
 	char		*tmp;
 	int			start;
 	int			len;
-
-	binary = get_arg_uoxX(ap, pf);
+	
+	binary = get_arg_uoxx(ap, pf);
 	len = binary == 0 ? pf->set.width : cal_len(pf, binary, 2);
 	tmp = ft_itoa_base_u(binary, 2);
 	if (pf->set.precision > (int)ft_strlen(tmp) && pf->set.precision > len)

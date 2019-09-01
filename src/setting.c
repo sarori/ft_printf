@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:12:32 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 02:24:09 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 16:12:29 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	length_setting(char *input, int *i, t_pf *pf)
 		}
 		else
 			pf->set.length_l = 1;
-		*i += 1;
 	}
 	else if (input[*i] == 'h')
 	{
@@ -76,11 +75,10 @@ void	length_setting(char *input, int *i, t_pf *pf)
 		}
 		else
 			pf->set.length_h = 1;
-		*i += 1;
 	}
 	else if (input[*i] == 'L')
-	{
-		pf->set.length_L = 1;
-		*i += 1;
-	}
+		pf->set.length_large = 1;
+	else
+		return ;
+	*i += 1;
 }
