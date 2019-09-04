@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:24:50 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 18:48:12 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/04 02:14:00 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,15 @@ char			*di_zerohandle(t_pf *pf, char *res, int len)
 	size = 0;
 	len = cal_len(pf, 0, 10);
 	if (pf->set.dot && !pf->set.precision && !pf->set.width)
+	{
 		len = 0;
-	else if (pf->set.hash && !pf->set.precision && !pf->set.width && !pf->set.precision)
+		res = ft_memalloc_chr(len, ' ');
+		res[len] = '\0';
+		return (res);
+	}
+
+	else if (pf->set.hash && !pf->set.precision
+			&& !pf->set.width && !pf->set.precision)
 		len = 1;
 	res = ft_memalloc_chr(len, ' ');
 	res[len] = '\0';

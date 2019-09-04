@@ -6,20 +6,30 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:40:03 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 19:30:39 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/04 02:21:45 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+
+
+
+
+
+#include <stdio.h>
+
+
+
+
+
 # include "libft.h"
 # include <stdlib.h>
 # include <stdarg.h>
-//
-#include <stdio.h>
-//
-#define SPECIFIER "cspdiouxXf%b"
+
+# define SPECIFIER	"cspdiouxXf%bn"
+
 typedef struct		s_flag_lst
 {
 	int				plus;
@@ -66,6 +76,8 @@ typedef struct		s_pf
 }					t_pf;
 
 int					ft_printf(char *str, ...);
+int					ft_dprintf(int fd, char *str, ...);
+int					ft_sprintf(char *buffer, char *str, ...);
 int					specifier(char *input, int *point, va_list *ap);
 void				*ft_memalloc_chr(size_t size, char c);
 int					setting(char *input, int *point, va_list *ap, t_pf *pf);
@@ -85,8 +97,7 @@ int64_t				get_arg_di(va_list *ap, t_pf *pf);
 u_int64_t			get_arg_uoxx(va_list *ap, t_pf *pf);
 long double			get_arg_f(va_list *ap, t_pf *pf);
 void				flag_setting(char *input, int *i, t_pf *pf);
-void				width_setting(char *input, int *i, t_pf *pf);
-void				precision_setting(char *input, int *i, t_pf *pf);
+void				widprec_setting(char *input, int *i, t_pf *pf);
 void				length_setting(char *input, int *i, t_pf *pf);
 int					ft_digit_base(int n, int base);
 int					ft_digit_base_u(unsigned long long n,
@@ -114,7 +125,7 @@ char				*ft_strjoinfree(char *s1, char *s2, int mfree);
 char				*o_minus_handle(t_pf *pf, char *res, char *tmp);
 char				*ou_handle(t_pf *pf, char *res, char *tmp);
 char				*di_zerohandle(t_pf *pf, char *res, int len);
-char 				*f_zero_handle(t_pf *pf, char *res, int start, int size);
+char				*f_zero_handle(t_pf *pf, char *res, int start, int size);
 void				insertnode(t_pf *pf, char *res);
 u_int64_t			zero_len(t_pf *pf, u_int64_t num);
 char				*c_zerohandle(t_pf *pf, char *res, int len);
@@ -124,6 +135,11 @@ char				*di_helper2(t_pf *pf, char *res, char *tmp);
 int					cal_helper(t_pf *pf, u_int64_t num, int max, int base);
 char				*o_zero(t_pf *pf, int len);
 char				*x_handle(t_pf *pf, char *res, char *tmp);
-void				ft_color(char *s, int *i, t_pf *pf);
 char				*x_helper(t_pf *pf, char *res, char *tmp);
+void				type_len(va_list *ap, t_pf *pf);
+char				*b_helper(t_pf *pf, char *res, char *tmp);
+char				*b_handle(t_pf *pf, char *res, char *tmp);
+char				*xzero(t_pf *pf, char *res, char *tmp);
+char				*b_zero(t_pf *pf, char *res, char *tmp);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:14:07 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 16:29:54 by sapark           ###   ########.fr       */
+/*   Updated: 2019/08/31 20:20:53 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,18 @@ u_int64_t	cvt_num(t_pf *pf, long double num)
 	n = (uintmax_t)dp;
 	n += ((uintmax_t)(dp * 10)) % 10 >= 5 ? 1 : 0;
 	return (n);
+}
+
+char		*ft_str_toupper(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 32;
+		i++;
+	}
+	return (str);
 }

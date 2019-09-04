@@ -1,11 +1,26 @@
 
 #include "includes/ft_printf.h"
 #include <limits.h>
+#include <stdio.h>
 
 #define FP ft_printf
 
 int main(int ac, char *av[])
 {
+	// ft_printf("%2$s, %1$s!", "world", "hello");
+	// ft_printf("%010x\n", 542);
+	// printf("%010x\n", 542);
+	ft_printf("%");
+	// ft_printf("%10s is a string\n", "");
+	// printf("%10s is a string\n", "");
+	// ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	// printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	// ft_printf("%7.5s\n", "bombastic");
+	// printf("%7.5s\n", "bombastic");
+	// ft_printf("%%\n");
+	// printf("%*d", 5, 42);
+	// ft_printf("%*d", 5, 42);
+	// ft_printf("\n%#b\n", 8);
 	// ft_printf("%#x\n", 42);
 	// ft_printf("%#8x\n", 42);
 	// ft_printf("%#llx\n", 9223372036854775807);
@@ -26,7 +41,7 @@ int main(int ac, char *av[])
 	// printf("%.5p\n", 0);
 	// ft_printf("%.5p\n", 0);
 	// printf("%10p\n", 0);
-	// printf("%10p\n", 0);
+	// // printf("%10p\n", 0);
 
 	// printf("f{%+03d}\n", 0);
 	// ft_printf("{%+03d}\n", 0);
@@ -47,15 +62,17 @@ int main(int ac, char *av[])
 	// ft_printf("%2.9p\n", 1234);
 	//  ft_printf("%#08x\n", 42);
 	// printf("f%#08x\n", 42);
-	ft_printf("hello {red} good {eoc}\n");
-	ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
-	printf("f@moulitest: %5.x %5.0x\n", 0, 0);
-	 ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
-	printf("f@moulitest: %5.o %5.0o\n", 0, 0);
-	ft_printf("%03.2d\n", 0);
-	printf("f%03.2d\n", 0);
-	ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
-	printf("f@moulitest: %5.d %5.0d\n", 0, 0);
+	// ft_printf("lenght is %n", "hello");
+	// ft_printf("hello {red} good {eoc}\n");
+	// ft_printf("@moulitest: %5.x %5.0x\n", 0, 0);
+	// printf("f@moulitest: %5.x %5.0x\n", 0, 0);
+	//  ft_printf("@moulitest: %5.o %5.0o\n", 0, 0);
+	// printf("f@moulitest: %5.o %5.0o\n", 0, 0);
+	// ft_printf("%03.2d\n", 0);
+	// printf("f%03.2d\n", 0);
+	// ft_printf("@moulitest: %5.d %5.0d\n", 0, 0);
+	// printf("f@moulitest: %5.d %5.0d\n", 0, 0);
+
 	// ft_printf("%#-08x\n", 42);
 	// printf("%#-08x\n", 42);
 	// ft_printf("%#x\n", 0);

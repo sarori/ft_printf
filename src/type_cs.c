@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 16:03:41 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 17:12:35 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/04 01:16:02 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	type_s(va_list *ap, t_pf *pf)
 	char	*str;
 	int		len;
 
-	len = cal_len(pf, ft_strlen(str), 10);
 	str = va_arg(*ap, char *);
+	len = cal_len(pf, ft_strlen(str), 10);
 	if (!str)
 		pf->res = ft_strjoinfree(pf->res, "(null)", 1);
 	else

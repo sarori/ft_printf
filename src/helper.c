@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:45:55 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 16:29:10 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/04 02:11:15 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,20 @@ int		cal_len(t_pf *pf, u_int64_t num, int base)
 	}
 	max = cal_helper(pf, num, max, base);
 	return (max);
+}
+
+void	type_len(va_list *ap, t_pf *pf)
+{
+	char	*s;
+	char	*tmp;
+
+	s = va_arg(*ap, char *);
+	if (s == NULL)
+		pf->res = ft_strjoinfree(pf->res, "0", 1);
+	else
+	{
+		tmp = ft_itoa_base_u((uint64_t)ft_strlen(s), 10);
+		pf->res = ft_strjoinfree(pf->res, tmp, 1);
+		free(tmp);
+	}
 }
