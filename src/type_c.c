@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_cs.c                                          :+:      :+:    :+:   */
+/*   type_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 16:03:41 by sapark            #+#    #+#             */
-/*   Updated: 2019/09/04 01:16:02 by sapark           ###   ########.fr       */
+/*   Created: 2019/09/07 02:13:38 by sapark            #+#    #+#             */
+/*   Updated: 2019/09/07 03:50:04 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,29 +106,18 @@ char	*prec_handle(t_pf *pf, char *res, char *str)
 	return (res);
 }
 
-void	type_s(va_list *ap, t_pf *pf)
+char	*s_null_minus(t_pf *pf, char *res)
 {
-	char	*res;
-	char	*str;
-	int		len;
-
-	str = va_arg(*ap, char *);
-	len = cal_len(pf, ft_strlen(str), 10);
-	if (!str)
-		pf->res = ft_strjoinfree(pf->res, "(null)", 1);
-	else
+	if (pf->set.minus)
 	{
-		len = pf->set.width > (int)ft_strlen(str) ?
-			pf->set.width : (int)ft_strlen(str);
-		res = ft_memalloc_chr(len, ' ');
-		res[len] = '\0';
-		if (!pf->set.width && !pf->set.dot)
-			res = ft_strcpy(res, str);
+		if (pf->set.dot)
+		{
+			if (pf->set.precision > 0)
+				ft_elem(res, "(null)", 0, pf->set.precision < 6 ?
+					pf->set.precision : 6);
+		}
 		else
-			res = (pf->set.dot && !pf->set.width) ?
-				width_handle(pf, res, str) : prec_handle(pf, res, str);
-		insertnode(pf, res);
-		pf->res = ft_strjoinfree(pf->res, res, 1);
-		free(res);
+			ft_elem(res, "(null)", 0, 6);
 	}
+	return (res);
 }

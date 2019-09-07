@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:45:55 by sapark            #+#    #+#             */
-/*   Updated: 2019/09/04 02:11:15 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/07 02:46:33 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_elem(char *res, char *str, int start, int size)
 	return (res);
 }
 
-char	*element_join(char *res, char const *s1, char const *s2)
+char	*element_join(char *res, char *s1, char *s2)
 {
 	unsigned int	len1;
 	unsigned int	len2;

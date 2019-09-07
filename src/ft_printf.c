@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:38:44 by sapark            #+#    #+#             */
-/*   Updated: 2019/09/04 02:22:07 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/07 03:44:38 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,37 +108,43 @@ int			ft_sprintf(char *buffer, char *str, ...)
 	va_end(ap);
 	buffer = ft_strdup(pf->res);
 	ret = (int)ft_strlen(pf->res) - pf->minus;
+	ft_putstr(pf->res);
 	free(pf->res);
 	free(pf);
 	return (ret);
+}
+
+void		oper_func(int idx, va_list *ap, t_pf *pf)
+{
+	if (idx >= 0)
+		g_set_dt[idx].f(ap, pf);
 }
 
 int			setting(char *input, int *i, va_list *ap, t_pf *pf)
 {
 	int	idx;
 
-	idx = 0;
+	idx = -1;
 	pf->set = (t_flag_lst){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	while (input[*i] && input[*i + 1] && ft_strchr_idx(SPECIFIER, input[*i + 1]) < 0)
+	while (input[*i] && input[*i + 1])
 	{
 		*i += 1;
-		// printf("curr %c\n",input[*i]);
-		if ((input[*i] == '-' || input[*i] == '+' || input[*i] == ' '
-			|| input[*i] == '#' || input[*i] == '0') && !pf->set.width && !pf->set.precision)
+		if ((input[*i] == '-' || input[*i] == '+' || input[*i] == ' ' ||
+		input[*i] == '#' || input[*i] == '0') && !pf->set.width && !pf->set.dot)
 			flag_setting(input, i, pf);
 		else if (input[*i] >= '0' && input[*i] <= '9')
 			widprec_setting(input, i, pf);
 		else if (input[*i] == '.')
 			pf->set.dot = 1;
+		else if (input[*i] == '*')
+			star_setting(ap, pf);
 		else if (input[*i] == 'l' || input[*i] == 'h' || input[*i] == 'L')
 			length_setting(input, i, pf);
+		else if ((idx = ft_strchr_idx(SPECIFIER, input[*i])) >= 0)
+			break ;
 		else
-			break;
+			return (0);
 	}
-	// printf("pf->set.width:%d\n", pf->set.width);
-	// printf("pf->set.precision:%d\n",pf->set.precision);
-	idx = ft_strchr_idx(SPECIFIER, input[(*i)++ + 1]);
-	if (idx >= 0)
-		g_set_dt[idx].f(ap, pf);
+	oper_func(idx, ap, pf);
 	return (0);
 }

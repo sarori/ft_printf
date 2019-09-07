@@ -5,12 +5,261 @@
 
 #define FP ft_printf
 
-int main(int ac, char *av[])
+
+	int  main(int ac, char **av)
 {
+	ft_printf("%+d\n", 0);
+	printf("f%+d\n", 0);
+	// ft_printf("%03i\n", 0);
+	// printf("%03i\n", 0);
+	// ft_printf("% .3i\n", 0);
+	// printf("f% .3i\n", 0);
+	// printf("f% .3i\n", 0);
+	// ft_printf("% .3i\n", 0);
+	// // printf("% +7i\n", 0);
+	// ft_printf("% +7i\n", 0);
+	// printf("f%+8.5i\n", 0);
+	// ft_printf("%+8.5i\n", 0);
+	// printf("%03i\n", 0);
+	// ft_printf("%03i\n", 0);
+	// printf("f%0+7i\n", 0);
+	// printf("f%0 7i\n", 0);
+	// printf("f% 7i\n", 0);
+	// printf("f%+7i\n", 0);
+	// printf("f% 7.5i\n", 0);
+	// printf("f% 7.0i\n", 0);
+	// printf("f%07.5i\n", 0);
+
+
+	// ft_printf("%0 7i\n", 0);
+	// ft_printf("%0+7i\n", 0);
+	// ft_printf("% 7i\n", 0);
+	// ft_printf("%+7i\n", 0);
+	// ft_printf("% 7.5i\n", 0);
+	// ft_printf("% 7.0i\n", 0);
+	// ft_printf("%07.5i\n", 0);
+
+
+
+	// printf("%-7d\n", 0);
+	// ft_printf("%-7d\n",0);
+	// printf("%+-8.5i\n", 0);
+	// ft_printf("%+-8.5i\n", 0);
+	// printf("% -3i\n", 0);
+	// ft_printf("% -3i\n", 0);
+	// printf("% -8.5i\n", 0);
+	// ft_printf("% -8.5i\n", 0);
+
+	// printf("f% -3i\n", 0);
+	// ft_printf("% -3i\n", 0);
+	// printf("%#c\n", 0);
+	// ft_printf("%#c\n", 0);
+	// printf("f{%*3d\n", 5, 0);
+	// ft_printf("{%*3d}\n", 5, 0);
+
+	//  ft_printf("%4.15s\n", "42");
+	//  printf("f%4.15s\n", "42");
+	//  ft_printf("%4.15s\n", "I am 42");
+	//  printf("f%4.15s\n", "I am 42");
+	// printf("%i\n", 0);
+	// ft_printf("%i\n", 0);
+	// printf("f% -3i\n", 0);
+	// ft_printf("% -3i\n", 0);
+	// printf("this %d number\n", 0);
+	// ft_printf("this %d number\n", 0);
+
+	// printf("%03i\n", 0);
+	// ft_printf("%03i\n", 0);
+	// printf("%3i\n", 0);
+	// ft_printf("%3i\n", 0);
+	// printf("f%+7i\n", 0);
+	// ft_printf("%+7i\n", 0);
+	// printf("f%+8.5d\n", 0);
+	// ft_printf("%+8.5d\n", 0);
+	// printf("f%+.7i\n", 234);
+	// ft_printf("%+.7i\n", 234);
+	// printf("fthis %i number\n", 0);
+	// ft_printf("this %i number\n", 0);
+	// printf("%-8.5i\n", 0);
+	// ft_printf("%-8.5i\n", 0);
+	// printf("f%-10.8s\n", NULL);
+	// ft_printf("%-10.8s\n", NULL);
+	// printf("f%3.s\n", NULL);
+	// ft_printf("%3.s\n", NULL);
+	// printf("f%-32s\n", NULL);
+	// ft_printf("f%-32s\n", NULL);
+	// ft_printf("%32s\n", "abc");
+	// printf("f%32s\n", "abc");
+	// ft_printf("%16s\n", "nark nark");
+	// printf("%16s\n", "nark nark");
+
+	// ft_printf("%.5s%7s\n", "yo", "boi");
+	// printf("%.5s%7s\n", "yo", "boi");
+	// ft_printf("%3s%3s\n", "hello", "world");
+	// printf("%3s%3s\n", "hello", "world");
+	// ft_printf("%7.5s\n", "bombastic");
+	// printf("f%7.5s\n", "bombastic");
+	// ft_printf("%5s\n", "goes over");
+	// printf("%5s\n", "goes over");
+	// ft_printf("%32s\n", NULL);
+	// printf("f%32s\n", NULL);
+	// ft_printf("%-16s\n", NULL);
+	// printf("%-16s\n", NULL);//segfault
+	// ft_printf("%3.s\n", NULL);
+	// printf("f%3.s\n", NULL);
+	// ft_printf("%.03s\n", NULL);
+	// printf("f%.03s\n", NULL);
+	// printf("f%2s\n", NULL);
+	// ft_printf("%2s\n", NULL);
+	// printf("f%s %d %p %% %x\n", "bonjour ", 42, &free, 42);
+	// ft_printf("%s %d %p %% %x\n", "bonjour ", 42, &free, 42);
+	// printf("%#c\n", 0);
+	// ft_printf("%#c\n", 0);
+	// printf("%3.s\n", NULL);
+	// ft_printf("%3.s\n", NULL);
+	// printf("%.c\n", 0);
+	// ft_printf("%.c\n", 0);
+	/*============sprintf==========================*/
+
+	// int num1;
+	// char *str = NULL;
+
+    // char name[20];
+    // // char string[200];
+    
+    // printf("TYPE NAME : ");
+    // scanf("%s", name);
+    
+    // printf("TYPE AGE : ");
+    // scanf("%d", &num1);
+    
+    // // ft_sprintf(string, "Hello World. My name is %s and I\'m %d years old.", name, num1);
+    // ft_sprintf(str, "Hello World. My name is %s and I\'m %d years old.\n", name, num1);
+
+	// /*============dprintf==========================*/
+	// int fd = open("text.txt", O_RDWR);
+	// ft_dprintf(fd, "Hello World. My name is %s and I\'m %d years old.\n", name, num1);
+	// // sprintf(styring, "Hello World. My name is %s and I\'m %d years old.", name, num1);
+    // // printf("%s", string);
+
+	// ft_printf("this length is %n\n", "hello");
+	// ft_printf("binary into 42 is %b\n", 42);
+	// int     fd = open(av[1], O_RDONLY);
+	// ft_dprintf(fd, );
+
+ 
+	// ft_printf("%*.*d\n", 10, 5, 2);
+
+	// printf("%");
+	// ft_printf("%");
+	// printf("f%2$s, %1$s!\n", "world", "hello");
+	// ft_printf("%2$s, %1$s!\n", "world", "hello");
+	// ft_printf("%2$s, %1$s!\n", "world", "hello");
+	// static unsigned int		mx_u = 235;
+	// static long double			mx_Lf = 0.375l;
+	// static double				mx_f = 0.625;
+	// static long				mx_li =  4223372036854775800;
+	// static long long			mx_lli = 3223372036654775200;
+	// static char				mx_c = 'G';
+	// // static short				mx_hi = -3244;
+	// // static char				mx_hhi = 'F';
+	// static char			   *mx_s = "Hello, World!";
+	// static int					mx_i = 42;
+
+	// printf("  %i    %lli    %p    %o    %X    %f \n",
+	// 		mx_i, mx_lli, &mx_i, mx_u, mx_u, mx_f);
+	// ft_printf("  %i    %lli    %p    %o    %X    %f \n",
+	// 		mx_i, mx_lli, &mx_i, mx_u, mx_u, mx_f);
+	// printf("  %X    %i    %c    %lli    %o    %p  \n",
+	// 		mx_u, mx_i, mx_c, mx_lli, mx_u, &mx_i);
+	// ft_printf("  %X    %i    %c    %lli    %o    %p  \n",
+	// 		mx_u, mx_i, mx_c, mx_lli, mx_u, &mx_i);
+
+
+	// printf(
+	// 		"  %i    %lli    %p    %o    %X    %f  \n",
+	// 		mx_i, mx_lli, &mx_i, mx_u, mx_u, mx_f);
+	// ft_printf(
+	// 		"  %i    %lli    %p    %o    %X    %f  \n",
+	// 		mx_i, mx_lli, &mx_i, mx_u, mx_u, mx_f);
+	// printf(
+	// 		"  %hhi    %li    %p    %s    %Lf    %o  \n",
+	// 		mx_c, mx_li, &mx_i, mx_s, mx_Lf, mx_u);	//170
+	// ft_printf(
+	// 		"  %hhi    %li    %p    %s    %Lf    %o  \n",
+	// 		mx_c, mx_li, &mx_i, mx_s, mx_Lf, mx_u);			
+
+	// printf("a\n");
+	// printf("  %hhi    %li    %p    %s    %Lf    %o  \n",
+	// 		mx_c, mx_li, &mx_i, mx_s, mx_Lf, mx_u);
+	// ft_printf("  %hhi    %li    %p    %s    %Lf    %o  \n",
+	// 		mx_c, mx_li, &mx_i, mx_s, mx_Lf, mx_u);
+	// 	ft_printf("  %hhi    %li    %p        %Lf    %o  \n",
+	// 		mx_c, mx_li, &mx_i,  mx_Lf, mx_u);//segf
+	// ft_printf("  %li    %hhi    %u    %i    %X    %o  \n",
+	// 		mx_li, mx_c, mx_u, mx_i, mx_u, mx_u);//pass
+	// ft_printf("  %u    %c    %p    %hhi    %X    %f  \n",
+	// 		mx_u, mx_c, &mx_i, mx_c, mx_u, mx_f);
+
+	// int i;
+
+	// i = 0;
+	// printf("%");
+	// ft_printf("%");
+	// i = ft_printf("%5");
+	// printf("i:%d\n", i);
+	// printf("this %.0f float\n", 1.6);//결과값 틀림 고치기
+	// ft_printf("this %.0f floaxt\n", 1.6);
+
+	// ft_printf("%.0f", -3.85);
+// Test 1343 (f_prec0_1) : FAILED.
+//     First line of code: {return test("this %.0f float", 1.6);}
+//     SEGFAULT
+
+// Test 1346 (f_prec0_negative) : FAILED.
+//     First line of code: {return test("%.0f", -3.85);}
+//     SEGFAULT
+
+// Test 1347 (f_prec0_positive_3_3) : FAILED.
+//     First line of code: {return test("%.0f", 573.924);}
+//     SEGFAULT
+
+	// printf("%-3.1s\n", NULL);
+	// ft_printf("%-3.1s\n", NULL);
+	// printf("%-9.1s\n", NULL);
+	// ft_printf("%-9.1s\n", NULL);
+	// printf("%20.6s\n", NULL);
+	// ft_printf("%20.6s\n", NULL);
+
+	// ft_printf("%-3.1s\n", NULL);
+	// printf("f%-3.1s\n", NULL);
+	// printf("f%-16s\n", NULL);
+	// ft_printf("%-16s\n", NULL);
+	// printf("%-32s\n", NULL);
+	// ft_printf("%-32s\n", NULL);//문제 있는 경우
+	// printf("%2s\n", NULL);
+	// ft_printf("%2s\n", NULL);//error
+
+	// printf("f%.09s\n", NULL);
+	// ft_printf("%.09s\n", NULL);
+	// ft_printf("%7.5s\n", "bombastic");//error
+	// printf("%7.5s\n", "bombastic");
+	// ft_printf("%3.3s%7.7s\n", "hello", "world");
+	// printf("%3.3s%7.7s\n", "hello", "world");
+	// ft_printf("%3.3s%3.7s\n", "hello", "world");
+	// printf("f%3.3s%3.7s\n", "hello", "world");
+	// ft_printf("%7.7s%3.3s\n", "hello", "world");
+	// printf("%7.7s%3.3s\n", "hello", "world");
+
+
+	// ft_printf("%3.7s%3.3s\n", "hello", "world");
+	// printf("%3.7s%3.3s\n", "hello", "world");
+	// ft_printf("%-16s\n", NULL);
+	// printf("f%-16s\n", NULL);
+	// ft_printf("%7.5s", "bombastic");
 	// ft_printf("%2$s, %1$s!", "world", "hello");
 	// ft_printf("%010x\n", 542);
 	// printf("%010x\n", 542);
-	ft_printf("%");
 	// ft_printf("%10s is a string\n", "");
 	// printf("%10s is a string\n", "");
 	// ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);

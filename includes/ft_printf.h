@@ -6,23 +6,12 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:40:03 by sapark            #+#    #+#             */
-/*   Updated: 2019/09/04 02:21:45 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/07 03:46:57 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-
-
-
-
-
-#include <stdio.h>
-
-
-
-
 
 # include "libft.h"
 # include <stdlib.h>
@@ -109,7 +98,7 @@ char				*ft_itoa_bu(char *res, unsigned long long value,
 								unsigned long long base);
 char				*prec_handle(t_pf *pf, char *res, char *str);
 char				*width_handle(t_pf *pf, char *res, char *str);
-char				*element_join(char *res, char const *s1, char const *s2);
+char				*element_join(char *res, char *s1, char *s2);
 char				*ft_elem(char *res, char *str, int start, int size);
 int					cal_len(t_pf *pf, u_int64_t num, int base);
 char				*ft_str_toupper(char *str);
@@ -141,5 +130,12 @@ char				*b_helper(t_pf *pf, char *res, char *tmp);
 char				*b_handle(t_pf *pf, char *res, char *tmp);
 char				*xzero(t_pf *pf, char *res, char *tmp);
 char				*b_zero(t_pf *pf, char *res, char *tmp);
-
+char				*s_null(t_pf *pf, char *res);
+int					cal_slen(t_pf *pf, u_int64_t num);
+void				star_setting(va_list *ap, t_pf *pf);
+char				*s_null_minus(t_pf *pf, char *res);
+char				*di_helper3(t_pf *pf, char *res, int len);
+char				*s_handle(t_pf *pf, char *res, char *str);
+void				oper_func(int idx, va_list *ap, t_pf *pf);
+int					cal_slen_h(t_pf *pf, u_int64_t num, int tmp);
 #endif

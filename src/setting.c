@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 02:12:32 by sapark            #+#    #+#             */
-/*   Updated: 2019/09/04 02:20:57 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/06 23:23:29 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,12 @@ void	length_setting(char *input, int *i, t_pf *pf)
 	}
 	else if (input[*i] == 'L')
 		pf->set.length_large = 1;
+}
+
+void	star_setting(va_list *ap, t_pf *pf)
+{
+	if (pf->set.dot)
+		pf->set.precision = (int)va_arg(*ap, int);
+	else
+		pf->set.width = (int)va_arg(*ap, int);
 }

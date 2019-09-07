@@ -6,7 +6,7 @@
 /*   By: sapark <sapark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 15:58:52 by sapark            #+#    #+#             */
-/*   Updated: 2019/08/31 18:11:21 by sapark           ###   ########.fr       */
+/*   Updated: 2019/09/06 18:23:05 by sapark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*p_zerohandle(t_pf *pf, char *res, int len)
 
 char	*p_handle(t_pf *pf, char *res, char *tmp, int len)
 {
+	if (!pf->set.dot && !pf->set.width)
+		len += 2;
 	res = ft_memalloc_chr(len, ' ');
 	res[len] = '\0';
 	if (pf->set.minus)
